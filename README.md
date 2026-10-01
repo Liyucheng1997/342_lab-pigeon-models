@@ -1,6 +1,6 @@
 # 🕊️ 鸽子生态模拟 · 原鸽（*Columba livia*）三维建模
 
-**在线体验：<https://liyucheng1997.github.io/pigeon-sim/>** · [模型检视](https://liyucheng1997.github.io/pigeon-sim/viewer.html)
+**在线体验：<https://liyucheng1997.github.io/342_lab-pigeon-models/>** · [模型检视](https://liyucheng1997.github.io/342_lab-pigeon-models/viewer.html)
 
 一个在浏览器中运行的三维模拟：程序化精细建模的城市鸽子，按真实的生理需求与习性在广场上生活——觅食、吸吮式饮水、理羽、求偶、筑巢孵卵、哺育鸽乳、群飞、躲避天敌、黄昏归巢……
 

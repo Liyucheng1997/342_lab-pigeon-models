@@ -1,6 +1,8 @@
 {
-  "name": "pigeon-sim",
+  "name": "342-lab-pigeon-models",
   "version": "1.0.0",
+  "repository": "github:Liyucheng1997/342_lab-pigeon-models",
+  "homepage": "https://liyucheng1997.github.io/342_lab-pigeon-models/",
   "description": "精细建模的原鸽（家鸽）三维模型与行为生态模拟",
   "private": true,
   "type": "module",
