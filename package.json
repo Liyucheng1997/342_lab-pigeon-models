@@ -1,0 +1,13 @@
+{
+  "name": "pigeon-sim",
+  "version": "1.0.0",
+  "description": "精细建模的原鸽（家鸽）三维模型与行为生态模拟",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python serve.py 8342"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  }
+}

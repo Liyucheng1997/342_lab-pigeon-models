@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>鸽子生态模拟</title>
+<link rel="stylesheet" href="./styles.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/three.module.js",
+    "three/addons/": "./vendor/three/addons/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="app"></div>
+
+<!-- 左上：标题与时间 -->
+<section class="panel" id="clock-panel">
+  <div class="brand">
+    <span class="brand-mark">🕊️</span>
+    <div>
+      <h1>鸽子生态模拟</h1>
+      <p class="sub">原鸽 <i>Columba livia</i> · 城市广场</p>
+    </div>
+  </div>
+  <div class="clock">
+    <div class="clock-time"><span id="clock-day">第 1 天</span><b id="clock-time">07:12</b><span id="clock-period">清晨</span></div>
+    <div class="clock-meta"><span id="clock-temp">15°C</span><span id="clock-sun">☀️</span><span id="clock-count">8 只</span></div>
+  </div>
+  <div class="row speed" id="speed-buttons">
+    <button data-speed="0" title="暂停">⏸</button>
+    <button data-speed="1" class="on">1×</button>
+    <button data-speed="2">2×</button>
+    <button data-speed="4">4×</button>
+    <button data-speed="8">8×</button>
+  </div>
+  <div class="row jump">
+    <span class="label">跳到</span>
+    <button data-jump="6.2">黎明</button>
+    <button data-jump="8">早晨</button>
+    <button data-jump="12.5">中午</button>
+    <button data-jump="17.8">黄昏</button>
+    <button data-jump="22">深夜</button>
+    <button data-jump="+24" title="快进一整天，繁殖进程随之推进">+1 天</button>
+  </div>
+</section>
+
+<!-- 左下：事件 -->
+<section class="panel" id="events-panel">
+  <h3>鸽群动态</h3>
+  <ul id="events"></ul>
+</section>
+
+<!-- 底部工具栏 -->
+<nav class="panel" id="toolbar">
+  <div class="tool-group">
+    <button class="tool" data-tool="feed" title="点击地面撒一把谷子">🌾<span>撒食</span></button>
+    <button class="tool" data-tool="scare" title="在点击位置制造一声巨响">👏<span>拍手驱赶</span></button>
+    <button class="tool" data-action="feeder" title="让老人现在来广场喂鸽子">🧓<span>叫老人</span></button>
+    <button class="tool" data-action="child" title="一个小孩冲进鸽群">🧒<span>小孩</span></button>
+    <button class="tool" data-action="falcon" title="游隼来袭">🦅<span>游隼</span></button>
+    <button class="tool" data-action="flock" title="让鸽群起飞盘旋">🕊️<span>群飞</span></button>
+  </div>
+  <div class="divider"></div>
+  <div class="tool-group">
+    <button class="tool cam" data-cam="free" title="自由视角">🎥<span>自由</span></button>
+    <button class="tool cam on" data-cam="follow" title="跟随选中的鸽子">🎯<span>跟随</span></button>
+    <button class="tool cam" data-cam="close" title="近距离特写">🔍<span>特写</span></button>
+    <button class="tool" data-action="sound" id="sound-btn" title="开启/关闭声音">🔇<span>声音</span></button>
+    <button class="tool" data-action="wiki" title="习性百科">📖<span>百科</span></button>
+    <a class="tool" href="./viewer.html" target="_blank" title="在新页面中检视模型细节">🧬<span>模型</span></a>
+  </div>
+</nav>
+
+<!-- 右侧：选中的鸽子 -->
+<aside class="panel" id="bird-panel">
+  <div id="bird-chips"></div>
+  <header class="bird-head">
+    <div class="bird-name"><b id="b-name">灰灰</b><span id="b-sex" class="sex">♂</span></div>
+    <div class="bird-meta" id="b-meta">灰色双斑 · 成鸟</div>
+    <div class="bird-meta" id="b-mate"></div>
+  </header>
+  <div class="doing">
+    <div class="doing-label"><span class="dot"></span><b id="b-behavior">觅食</b></div>
+    <p id="b-thought">……</p>
+  </div>
+  <div class="section-title">需求与状态</div>
+  <div id="b-needs" class="bars"></div>
+  <div class="section-title">生理</div>
+  <div id="b-phys" class="grid2"></div>
+  <div class="section-title">决策 · 各行为效用得分</div>
+  <div id="b-scores" class="scores"></div>
+  <div class="section-title">今日统计</div>
+  <div id="b-stats" class="grid2"></div>
+  <div class="section-title">个体日志</div>
+  <ul id="b-log" class="log"></ul>
+</aside>
+
+<!-- 百科 -->
+<section class="panel hidden" id="wiki-panel">
+  <header><h3>习性百科 · 模拟中建模的行为</h3><button id="wiki-close">✕</button></header>
+  <div id="wiki-list"></div>
+</section>
+
+<div id="hint">左键拖动旋转视角 · 右键平移 · 滚轮缩放 · 点击鸽子查看它的状态</div>
+<div id="toast"></div>
+<div id="loading">正在孵化鸽子……</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

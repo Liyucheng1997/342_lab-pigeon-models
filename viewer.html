@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>鸽子模型检视</title>
+<link rel="stylesheet" href="./styles.css" />
+<style>
+  #viewer-panel { left: 16px; top: 16px; width: 300px; padding: 14px 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+  #viewer-panel h1 { margin: 0 0 2px; font-size: 17px; }
+  #viewer-panel .sub { margin: 0 0 12px; color: var(--muted); font-size: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips button { border: 1px solid var(--line); background: rgba(255,255,255,.05); border-radius: 8px; padding: 5px 10px; font-size: 12.5px; cursor: pointer; }
+  .chips button.on { background: var(--accent); color: #0d1a16; border-color: transparent; font-weight: 600; }
+  .chips button:hover:not(.on) { background: rgba(255,255,255,.12); }
+  .toggles label { display: flex; align-items: center; gap: 8px; font-size: 13px; margin: 6px 0; cursor: pointer; }
+  #anatomy { right: 16px; top: 16px; width: 330px; padding: 14px 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+  #anatomy h3 { margin: 0 0 10px; font-size: 15px; }
+  #anatomy dl { margin: 0; font-size: 12.5px; line-height: 1.6; }
+  #anatomy dt { font-weight: 600; color: var(--accent); margin-top: 10px; }
+  #anatomy dd { margin: 2px 0 0; color: #cfd6e2; }
+  #pose-note { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: rgba(127,209,185,.12); font-size: 12.5px; line-height: 1.6; min-height: 3em; }
+  .back { display: inline-block; margin-top: 12px; color: var(--muted); font-size: 12px; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/" } }
+</script>
+</head>
+<body>
+<div id="app"></div>
+<section class="panel" id="viewer-panel">
+  <h1>🧬 鸽子模型检视</h1>
+  <p class="sub">程序化建模 · 约 150 片独立羽毛 · 可动骨骼</p>
+  <div class="section-title">姿态 / 动作</div>
+  <div class="chips" id="poses"></div>
+  <div id="pose-note"></div>
+  <div class="section-title">羽色型</div>
+  <div class="chips" id="morphs"></div>
+  <div class="section-title">性别</div>
+  <div class="chips" id="sexes"></div>
+  <div class="section-title">显示</div>
+  <div class="toggles">
+    <label><input type="checkbox" id="turntable" checked /> 转台自动旋转</label>
+    <label><input type="checkbox" id="slowmo" /> 慢动作（0.25×）</label>
+    <label><input type="checkbox" id="shell" checked /> 收拢时使用翼面（关闭可看到逐片覆羽）</label>
+  </div>
+  <a class="back" href="./index.html">← 返回生态模拟</a>
+</section>
+
+<aside class="panel" id="anatomy">
+  <h3>外形特征（均已建模）</h3>
+  <dl>
+    <dt>蜡膜（鼻瘤）</dt><dd>喙基部上方两团白色粉状隆起，覆盖鼻孔；成年雄鸽更大。</dd>
+    <dt>虹膜</dt><dd>成鸟多为橙红色，带放射状纹理；白鸽常为暗色“牛眼”。眼周有一圈裸露的眼环。</dd>
+    <dt>虹彩颈羽</dt><dd>颈部的绿色与紫色金属光泽是薄膜干涉形成的结构色，转动视角颜色会变化；雄鸽更强，幼鸽几乎没有。</dd>
+    <dt>颈部</dt><dd>可伸缩的柔性颈：行走时“点头”、饮水时伸到水面、求偶时鼓胀（嗉囊充气）、理羽时扭转近 180°。</dd>
+    <dt>翼斑</dt><dd>灰色双斑型在收拢的翅膀上有两道黑色横斑（大覆羽末端与次级飞羽中段）。雨点型则在翼盾上有深色斑点。</dd>
+    <dt>飞羽</dt><dd>每侧 10 枚初级飞羽（形成尖翼）、11 枚次级飞羽（含三级飞羽），外加大/中/小覆羽、初级覆羽、小翼羽与肩羽，翅膀收拢时呈“Z”字折叠。翼下覆羽颜色较浅。</dd>
+    <dt>腰部白斑与尾带</dt><dd>原鸽下背有一块白斑，飞行时可见；12 枚尾羽末端有一道黑色次端带，外侧尾羽外翈白色。</dd>
+    <dt>脚</dt><dd>不等趾足：三趾向前、一趾向后，适合在地面行走和抓握窗台。跗跖为红色，覆盖盾状角质鳞，趾端有深色爪。胫部被体羽覆盖。</dd>
+  </dl>
+</aside>
+<script type="module" src="./src/viewer.js"></script>
+</body>
+</html>
